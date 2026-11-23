@@ -31,7 +31,7 @@ const AdminLayout = () => {
     { path: '/admin/profile', label: 'Profile', icon: FaUserShield },
     { path: '/admin/kyc', label: 'Manage Kyc', icon: FaIdCard },
     // External link – opens in new tab
-    { path: 'https://chat-support4.onrender.com/admin/private', label: 'Live Chat', icon: FaEnvelope, external: true },
+    { path: 'https://chat-support4.onrender.com//admin/private', label: 'Live Chat', icon: FaEnvelope, external: true },
   ];
 
   return (

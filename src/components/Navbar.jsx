@@ -109,7 +109,7 @@ const Navbar = () => {
 
   // ✅ Live chat — passa o nome completo do usuário na URL
   const openLiveChat = () => {
-    const baseUrl = 'https://chat-support4.onrender.com';
+    const baseUrl = 'https://chat-support4.onrender.com/';
     const userFullName = user?.fullName;
 
     let url = baseUrl;
