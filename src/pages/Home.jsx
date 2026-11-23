@@ -12,6 +12,15 @@ import AnimatedCounter from '../components/AnimatedCounter';
 
 const Preloader = () => <LoadingScreen />;
 
+// Company / legal details
+const COMPANY_DETAILS = {
+  cnpj: '05.507.500/0001-38',
+  officialName: 'Brazilian Trade and Investment Promotion Agency – Apex-Brasil',
+  incorporationDate: 'February 13, 2003',
+  legalStatus: 'Autonomous Social Service / Non-Profit Civil Association',
+  address: 'SAUN Quadra 5, Lote C, Torre B (Block B), Brasília – DF, Postal Code (CEP) 70040-250, Brazil',
+};
+
 const Header = () => (
   <div className="bg-slate-800 py-2">
     <div className="container mx-auto px-4">
@@ -26,6 +35,10 @@ const Header = () => (
           <div className="flex items-center">
             <i className="fab fa-telegram text-blue-400 mr-2"></i>
             <span className="text-slate-300">Suporte 24/7</span>
+          </div>
+          <div className="hidden md:flex items-center">
+            <i className="fas fa-id-card text-blue-400 mr-2"></i>
+            <span className="text-slate-300">CNPJ: {COMPANY_DETAILS.cnpj}</span>
           </div>
         </div>
         {/* <GoogleTranslate /> */}
@@ -430,7 +443,11 @@ const Footer = () => (
             </li>
             <li className="flex items-start">
               <i className="fas fa-map-marker-alt mt-1 text-blue-500 mr-3"></i>
-              <span className="text-slate-400">Reino Unido</span>
+              <span className="text-slate-400">{COMPANY_DETAILS.address}</span>
+            </li>
+            <li className="flex items-start">
+              <i className="fas fa-id-card mt-1 text-blue-500 mr-3"></i>
+              <span className="text-slate-400">CNPJ: {COMPANY_DETAILS.cnpj}</span>
             </li>
           </ul>
         </div>
@@ -456,7 +473,34 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="pt-10 border-t border-slate-800 text-center">
+      {/* Company / legal information */}
+      <div className="border-t border-slate-800 pt-8 pb-6">
+        <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Informações da Empresa</h3>
+        <dl className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 text-sm">
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <dt className="text-slate-500 shrink-0">Razão Social:</dt>
+            <dd className="text-slate-300">{COMPANY_DETAILS.officialName}</dd>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <dt className="text-slate-500 shrink-0">CNPJ (Tax ID):</dt>
+            <dd className="text-slate-300">{COMPANY_DETAILS.cnpj}</dd>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <dt className="text-slate-500 shrink-0">Data de Constituição:</dt>
+            <dd className="text-slate-300">{COMPANY_DETAILS.incorporationDate}</dd>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2">
+            <dt className="text-slate-500 shrink-0">Natureza Jurídica:</dt>
+            <dd className="text-slate-300">{COMPANY_DETAILS.legalStatus}</dd>
+          </div>
+          <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-2 md:col-span-2">
+            <dt className="text-slate-500 shrink-0">Endereço:</dt>
+            <dd className="text-slate-300">{COMPANY_DETAILS.address}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div className="pt-6 border-t border-slate-800 text-center">
         <p className="text-slate-500 text-sm">
           © 2024 {SITE_NAME}. Todos os direitos reservados.
         </p>
