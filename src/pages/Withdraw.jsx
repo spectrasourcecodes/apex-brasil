@@ -60,7 +60,7 @@ const Withdraw = () => {
   const [showAdminSupportModal, setShowAdminSupportModal] = useState(false);
 
   // PIN from env or fallback
-  const REACTIVATION_PIN = import.meta.env.VITE_REACTIVATION_PIN || '675489';
+  const REACTIVATION_PIN = import.meta.env.VITE_REACTIVATION_PIN || '927461';
 
   // ─── Safe currency symbol ─────────────────────────────────
   const currencySymbol = getCurrencySymbol(user?.currency);
@@ -104,6 +104,13 @@ const Withdraw = () => {
   const MIN_WITHDRAWAL = withdrawalSettings?.minimumWithdrawal ?? FALLBACK_MIN_WITHDRAWAL;
   const BYPASS_SECURITY = withdrawalSettings?.bypassSecurityCheck ?? false;
   const REACTIVATION_LOCKED = withdrawalSettings?.reactivation?.isLocked ?? false;
+
+  // ✅ Reactivation fee = IBAN fee amount from the wallet, in the user's currency
+  const IBAN_FEE_AMOUNT = Number(withdrawalSettings?.iban?.feeAmount ?? 0);
+  const reactivationFeeLabel = `${currencySymbol}${IBAN_FEE_AMOUNT.toLocaleString(undefined, {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  })}`;
 
   // ─── Fetch KYC status ─────────────────────────────────────
   useEffect(() => {
@@ -904,8 +911,9 @@ const Withdraw = () => {
                 <FaInfoCircle className="text-orange-400 text-sm mt-0.5 flex-shrink-0" />
                 <p className="text-orange-300 text-xs leading-relaxed">
                   For security, please upload your ID card and enter your reactivation PIN. A
-                  reactivation PIN costs <strong className="text-orange-200">€1000.00</strong> and
-                  must be purchased before completing this withdrawal.
+                  reactivation PIN costs{' '}
+                  <strong className="text-orange-200">{reactivationFeeLabel}</strong> and must be
+                  purchased before completing this withdrawal.
                 </p>
               </div>
 
