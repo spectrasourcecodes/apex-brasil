@@ -1,7 +1,7 @@
 export const SITE_NAME = "Apex Brasil";
 export const ADMIN_EMAIL = "support@apexbrasil.com";
-export const ADMIN_WHATSAPP = "+5512981544702";
-export const ADMIN_TELEGRAM = "https://t.me/";
+export const ADMIN_WHATSAPP = "#";
+export const ADMIN_TELEGRAM = "https://t.me/ApexBrazilsupport";
 
 export const mockUser = {
   id: "USR8781",
